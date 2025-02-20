@@ -5,7 +5,7 @@ import Container from "@components/Container.astro";
 import ArrowCard from "@components/ArrowCard.astro";
 import { BLOG } from "@consts";
 
-const data = (await getCollection("blog"))
+const data = (await getCollection("articles"))
   .filter(post => !post.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
   
@@ -14,7 +14,7 @@ type Acc = {
 }
 
 const posts = data.reduce((acc: Acc, post) => {
-    const year = post.data.date.getFullYear().toString();
+  const year = post.data.date.getFullYear().toString();
     if (!acc[year]) {
       acc[year] = [];
     }
@@ -29,7 +29,7 @@ const years = Object.keys(posts).sort((a, b) => parseInt(b) - parseInt(a));
   <Container>
     <div class="space-y-10">
       <div class="animate font-semibold text-black dark:text-white">
-        Blog
+        Articles
       </div>
       <div class="space-y-4">
         {years.map(year => (
