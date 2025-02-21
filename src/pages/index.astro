@@ -126,11 +126,13 @@ const work = await Promise.all(
         </div>
         <ul class="flex flex-col gap-4">
           {
-            projects.map((project) => (
-              <li>
-                <ArrowCard entry={project} />
-              </li>
-            ))
+            projects.length > 0
+              ? projects.map((project) => (
+                  <li>
+                    <ArrowCard entry={project} />
+                  </li>
+                ))
+              : "Coming Soon!"
           }
         </ul>
       </section>
