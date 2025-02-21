@@ -3,11 +3,11 @@ import { getCollection } from "astro:content";
 import Container from "@components/Container.astro";
 import PageLayout from "@layouts/PageLayout.astro";
 import ArrowCard from "@components/ArrowCard.astro";
-import Link from "@components/Link.astro";
 import SocialLink from "@components/SocialLink.astro";
 import { dateRange } from "@lib/utils";
 import { SITE, HOME, SOCIALS, ROUTES } from "@consts";
 import CalendarBooker from "@react/components/CalendarBooker";
+import Section from "@components/Section.astro";
 
 const articles = (await getCollection("articles"))
   .filter((post) => !post.data.draft)
@@ -38,25 +38,16 @@ const work = await Promise.all(
 <PageLayout title={HOME.TITLE} description={HOME.DESCRIPTION}>
   <Container>
     <div class="space-y-16">
-      <section class="animate space-y-6">
-        <h4 class="animate font-semibold text-black dark:text-white">
-          Hi, I'm Panashe <span class="text-xl">👋</span>
-        </h4>
-        <article class="space-y-4">
-          <p class="animate">
-            I'm a strategic engineering consultant who helps early-stage NYC
-            startups, especially those with non-technical founders, align their
-            technology with their business goals.
-          </p>
-        </article>
-      </section>
-      <section class="animate space-y-6">
-        <div class="flex flex-wrap gap-y-2 items-center justify-between">
-          <h5 class="font-semibold text-black dark:text-white">
-            Latest articles
-          </h5>
-          <Link href={ROUTES.Articles}> See all articles</Link>
-        </div>
+      <Section
+        title="Hi, I'm Panashe 👋"
+        description="I'm a strategic engineering consultant who helps \
+        early-stage NYC startups, especially those with non-technical founders, \
+        align their technology with their business goals."
+      />
+      <Section
+        title="Latest articles"
+        link={{ text: "See all articles", href: ROUTES.Articles }}
+      >
         <ul class="flex flex-col gap-4">
           {
             articles.map((post) => (
@@ -66,18 +57,11 @@ const work = await Promise.all(
             ))
           }
         </ul>
-      </section>
-      <section class="animate space-y-6">
-        <h5 class="animate font-semibold text-black dark:text-white">
-          Mailing List
-        </h5>
-        <article class="space-y-4">
-          <p class="animate">
-            Sign up for my mailing list to receive my articles straight in your
-            inbox.
-          </p>
-        </article>
-        <form
+      </Section>
+      <Section
+        title="Mailing List"
+        description="Sign up for my mailing list to receive my articles straight in your inbox."
+        ><form
           action="https://buttondown.com/api/emails/embed-subscribe/passionately-curious"
           method="post"
           target="popupwindow"
@@ -116,14 +100,11 @@ const work = await Promise.all(
             </a>
           </p>
         </form>
-      </section>
-      <section class="animate space-y-6">
-        <div class="flex flex-wrap gap-y-2 items-center justify-between">
-          <h5 class="font-semibold text-black dark:text-white">
-            Recent projects
-          </h5>
-          <Link href={ROUTES.Projects}> See all projects </Link>
-        </div>
+      </Section>
+      <Section
+        title="Recent projects"
+        link={{ text: "See all projects", href: ROUTES.Projects }}
+      >
         <ul class="flex flex-col gap-4">
           {
             projects.length > 0
@@ -135,15 +116,12 @@ const work = await Promise.all(
               : "Coming Soon!"
           }
         </ul>
-      </section>
-      <section class="animate space-y-6">
-        <div class="flex flex-wrap gap-y-2 items-center justify-between">
-          <h5 class="font-semibold text-black dark:text-white">
-            Work Experience
-          </h5>
-          <Link href={ROUTES.Work}> See all work </Link>
-        </div>
-        <ul class="flex flex-col space-y-4">
+      </Section>
+      <Section
+        title="Work experience"
+        link={{ text: "See all work", href: ROUTES.Work }}
+      >
+        <ul class="flex flex-col gap-4">
           {
             work.map((entry) => (
               <li>
@@ -161,18 +139,12 @@ const work = await Promise.all(
             ))
           }
         </ul>
-      </section>
+      </Section>
 
-      <section class="animate space-y-4">
-        <h5 class="font-semibold text-black dark:text-white">
-          Let's Work Together
-        </h5>
-        <article>
-          <p>
-            If you're interested in working with me, book a complementary
-            discovery session below.
-          </p>
-        </article>
+      <Section
+        title="Let's Work Together"
+        description="If you're interested in working with me, book a complementary discovery session below."
+      >
         <CalendarBooker client:load />
         <ul class="flex flex-wrap gap-2">
           {
@@ -192,7 +164,7 @@ const work = await Promise.all(
             ))
           }
         </ul>
-      </section>
+      </Section>
     </div>
   </Container>
 </PageLayout>
