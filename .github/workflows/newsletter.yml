@@ -1,0 +1,48 @@
+name: Publish Newsletter
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/content/articles/**'
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # Read Volta config from package.json
+      - name: Read Volta config
+        id: volta
+        run: |
+          echo "NODE_VERSION=$(jq -r '.volta.node' package.json)" >> $GITHUB_OUTPUT
+          echo "PNPM_VERSION=$(jq -r '.volta.pnpm' package.json)" >> $GITHUB_OUTPUT
+      
+      - uses: pnpm/action-setup@v2
+        with:
+          version: ${{ steps.volta.outputs.PNPM_VERSION }}
+      
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ steps.volta.outputs.NODE_VERSION }}
+          cache: 'pnpm'
+          
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile --strict-peer-dependencies --prefer-offline --verify-store-integrity
+        
+      - name: Publish to Buttondown
+        run: pnpm run publish-to-buttondown
+        env:
+          BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
+          
+      - name: Push changes
+        run: |
+          if [[ -n $(git status --porcelain) ]]; then
+            git config --local user.email "github-actions[bot]@users.noreply.github.com"
+            git config --local user.name "github-actions[bot]"
+            git push
+          fi

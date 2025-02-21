@@ -95,12 +95,6 @@ async function createGitCommit(filePath: string, title: string): Promise<void> {
   }
 }
 
-interface ButtondownPost {
-  subject: string;
-  body: string;
-  email_type: "public" | "private";
-}
-
 async function publishToButtondown(post: Article) {
   if (!process.env.BUTTONDOWN_API_KEY) {
     throw new Error("BUTTONDOWN_API_KEY not found in environment");
@@ -115,20 +109,9 @@ async function publishToButtondown(post: Article) {
     body: JSON.stringify({
       subject: post.data.title,
       body: post.body,
-      email_type: "private",
-      status: "draft",
-      filters: {
-        filters: [
-          {
-            field: "email_address",
-            operator: "equals",
-            value: "fundirap@gmail.com",
-          },
-        ],
-        groups: [],
-        predicate: "and",
-      },
-    } as ButtondownPost),
+      email_type: "public",
+      status: "about_to_send",
+    }),
   });
 
   if (!response.ok) {

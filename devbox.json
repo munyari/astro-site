@@ -1,9 +1,11 @@
 {
   "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.13.7/.schema/devbox.schema.json",
-  "packages": ["nodejs@23.2.0"],
+  "packages": [
+    "volta@latest"
+  ],
   "env": {
     "DEVBOX_COREPACK_ENABLED": "true",
-    "COREPACK_ROOT": "./.corepack"
+    "COREPACK_ROOT":           "./.corepack"
   },
   "shell": {
     "init_hook": ["echo 'Welcome to devbox!' > /dev/null"],
