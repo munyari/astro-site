@@ -13,7 +13,8 @@
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "import-newsletters": "tsx --env-file=.env src/scripts/import-newsletters.ts"
+    "import-newsletters": "tsx --env-file=.env src/scripts/import-newsletters.ts",
+    "publish-to-buttondown": "tsx --env-file=.env src/scripts/publish-to-buttondown.ts"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
@@ -48,9 +49,11 @@
     "@eslint/js": "^9.20.0",
     "@total-typescript/ts-reset": "^0.6.1",
     "globals": "^16.0.0",
+    "gray-matter": "^4.0.3",
     "prettier": "^3.5.1",
     "prettier-plugin-astro": "^0.14.1",
     "slugify": "^1.6.6",
-    "tsx": "^4.19.3"
+    "tsx": "^4.19.3",
+    "zod": "^3.24.2"
   }
 }

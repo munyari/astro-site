@@ -7,6 +7,8 @@ const articles = defineCollection({
     description: z.string(),
     date: z.coerce.date(),
     draft: z.boolean().optional(),
+    publishToNewsletter: z.boolean().optional().default(false),
+    publishedToNewsletter: z.boolean().optional().default(false),
   }),
 });
 
