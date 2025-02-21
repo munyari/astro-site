@@ -12,6 +12,7 @@ A prospective client came to me, and they were very excited about building a new
 See, they didn't have any data on what their users engage with in the product. This means they had no way to quantify the impact of new features. In fact, they weren't tracking their sales funnel, or their uptime, or how much they were spending per client. This was a data poor organization.
 
 Sriram Narayan defines [measurement debt](https://www.agileorgdesign.com/business-retrospectives/measurement-debt) thusly:
+
 > An organization takes on measurement debt when it implements initiatives without investing in the measurement infrastructure required to validate the benefits delivered by those initiatives.
 
 This founder thought he had a technical debt problem. His inexperienced engineers were stuck, his codebase was poorly documented, and he needed someone senior to deliver the project.

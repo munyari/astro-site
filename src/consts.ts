@@ -10,11 +10,11 @@ export const SITE: Site = {
 
 export const HOME: Metadata = {
   TITLE: "Home",
-  DESCRIPTION: "Personal site and blog of Panashe M. Fundira.",
+  DESCRIPTION: "Personal site for Panashe M. Fundira.",
 };
 
-export const BLOG: Metadata = {
-  TITLE: "Blog",
+export const ARTICLES: Metadata = {
+  TITLE: "Articles",
   DESCRIPTION: "I post occasional musings",
 };
 
