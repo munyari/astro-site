@@ -1,6 +1,7 @@
 import slugify from "slugify";
 import { join } from "path";
 import { writeFile, mkdir } from "fs/promises";
+import { ROUTES } from "@consts";
 
 interface ButtonDownEmailsResponse {
   results: ButtonDownListingEmail[];
@@ -33,7 +34,7 @@ function sanitize(s: string) {
       // replace buttondown URLs with local URLs
       .replace(
         /https:\/\/buttondown\.com\/passionately-curious\/archive\/([^/"]+)\/?/g,
-        (_, slug) => `/articles/${slug}`,
+        (_, slug) => `${ROUTES.Articles}/${slug}`,
       )
       // simplify anchor tags
       .replace(

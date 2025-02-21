@@ -42,3 +42,9 @@ export const SOCIALS: Socials = [
     HREF: "https://www.linkedin.com/in/panashe-fundira",
   },
 ];
+
+export const ROUTES = {
+  Articles: "/articles",
+  Projects: "/projects",
+  Work: "/work",
+} as const;

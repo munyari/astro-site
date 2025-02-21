@@ -5,9 +5,9 @@ import PageLayout from "@layouts/PageLayout.astro";
 import ArrowCard from "@components/ArrowCard.astro";
 import Link from "@components/Link.astro";
 import SocialLink from "@components/SocialLink.astro";
-import EmailLink from "@components/EmailLink.astro";
 import { dateRange } from "@lib/utils";
-import { SITE, HOME, SOCIALS } from "@consts";
+import { SITE, HOME, SOCIALS, ROUTES } from "@consts";
+import CalendarBooker from "@react/components/CalendarBooker";
 
 const articles = (await getCollection("articles"))
   .filter((post) => !post.data.draft)
@@ -55,7 +55,7 @@ const work = await Promise.all(
           <h5 class="font-semibold text-black dark:text-white">
             Latest articles
           </h5>
-          <Link href="/articles"> See all articles</Link>
+          <Link href={ROUTES.Articles}> See all articles</Link>
         </div>
         <ul class="flex flex-col gap-4">
           {
@@ -122,7 +122,7 @@ const work = await Promise.all(
           <h5 class="font-semibold text-black dark:text-white">
             Recent projects
           </h5>
-          <Link href="/projects"> See all projects </Link>
+          <Link href={ROUTES.Projects}> See all projects </Link>
         </div>
         <ul class="flex flex-col gap-4">
           {
@@ -141,7 +141,7 @@ const work = await Promise.all(
           <h5 class="font-semibold text-black dark:text-white">
             Work Experience
           </h5>
-          <Link href="/work"> See all work </Link>
+          <Link href={ROUTES.Work}> See all work </Link>
         </div>
         <ul class="flex flex-col space-y-4">
           {
@@ -164,13 +164,16 @@ const work = await Promise.all(
       </section>
 
       <section class="animate space-y-4">
-        <h5 class="font-semibold text-black dark:text-white">Let's Connect</h5>
+        <h5 class="font-semibold text-black dark:text-white">
+          Let's Work Together
+        </h5>
         <article>
           <p>
-            If you want to get in touch with me about something or just to say
-            hi, reach out on social media or send me an email.
+            If you're interested in working with me, book a complementary
+            discovery session below.
           </p>
         </article>
+        <CalendarBooker client:load />
         <ul class="flex flex-wrap gap-2">
           {
             SOCIALS.map((SOCIAL) => (
@@ -189,12 +192,6 @@ const work = await Promise.all(
             ))
           }
         </ul>
-        <EmailLink
-          href={`mailto:${SITE.EMAIL}`}
-          aria-label={`Email ${SITE.NAME}`}
-        >
-          {SITE.EMAIL}
-        </EmailLink>
       </section>
     </div>
   </Container>

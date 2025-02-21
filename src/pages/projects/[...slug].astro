@@ -6,6 +6,7 @@ import FormattedDate from "@components/FormattedDate.astro";
 import { readingTime } from "@lib/utils";
 import BackToPrev from "@components/BackToPrev.astro";
 import Link from "@components/Link.astro";
+import { ROUTES } from "@consts";
 
 export async function getStaticPaths() {
   const projects = (await getCollection("projects"))
@@ -25,7 +26,7 @@ const { Content } = await project.render();
 <PageLayout title={project.data.title} description={project.data.description}>
   <Container>
     <div class="animate">
-      <BackToPrev href="/projects"> Back to projects </BackToPrev>
+      <BackToPrev href={ROUTES.Projects}> Back to projects </BackToPrev>
     </div>
     <div class="space-y-1 my-10">
       <div class="animate flex items-center gap-1.5">
