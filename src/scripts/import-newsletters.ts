@@ -43,7 +43,7 @@ function sanitize(s: string) {
         // - `[^>]*` matches any attributes after href
         // - `>` matches closing bracket
         /<a\s+[^>]*href="([^"]+)"[^>]*>/g,
-        '<a href="$1">',
+        "<a href=\"$1\">",
       )
   );
 }
