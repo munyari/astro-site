@@ -37,11 +37,11 @@ const work = await Promise.all(
 
 <PageLayout title={HOME.TITLE} description={HOME.DESCRIPTION}>
   <Container>
-    <h4 class="animate font-semibold text-black dark:text-white">
-      Hi, I'm Panashe <span class="text-xl">👋</span>
-    </h4>
     <div class="space-y-16">
-      <section>
+      <section class="animate space-y-6">
+        <h4 class="animate font-semibold text-black dark:text-white">
+          Hi, I'm Panashe <span class="text-xl">👋</span>
+        </h4>
         <article class="space-y-4">
           <p class="animate">
             I'm a strategic engineering consultant who helps early-stage NYC
@@ -50,7 +50,6 @@ const work = await Promise.all(
           </p>
         </article>
       </section>
-
       <section class="animate space-y-6">
         <div class="flex flex-wrap gap-y-2 items-center justify-between">
           <h5 class="font-semibold text-black dark:text-white">
@@ -68,7 +67,56 @@ const work = await Promise.all(
           }
         </ul>
       </section>
+      <section class="animate space-y-6">
+        <h5 class="animate font-semibold text-black dark:text-white">
+          Mailing List
+        </h5>
+        <article class="space-y-4">
+          <p class="animate">
+            Sign up for my mailing list to receive my articles straight in your
+            inbox.
+          </p>
+        </article>
+        <form
+          action="https://buttondown.com/api/emails/embed-subscribe/passionately-curious"
+          method="post"
+          target="popupwindow"
+          onsubmit="window.open('https://buttondown.com/passionately-curious', 'popupwindow')"
+          class="embeddable-buttondown-form space-y-4"
+        >
+          <div
+            class="flex flex-col sm:flex-row sm:items-end sm:gap-4 space-y-4 sm:space-y-0"
+          >
+            <div class="flex-grow">
+              <label for="bd-email" class="text-sm font-medium">
+                Enter your email
+              </label>
+              <input
+                type="email"
+                name="email"
+                id="bd-email"
+                class="w-full px-4 h-10 border rounded-lg dark:bg-gray-800 dark:border-gray-700"
+              />
+            </div>
 
+            <input
+              type="submit"
+              value="Subscribe"
+              class="px-4 py-2 h-10 font-semibold text-white bg-gray-500 rounded-lg hover:bg-gray-800 dark:bg-gray-200 dark:text-gray-900 dark:hover:bg-gray-300 sm:whitespace-nowrap"
+            />
+          </div>
+
+          <p class="text-xs text-gray-400">
+            <a
+              href="https://buttondown.com/refer/passionately-curious"
+              target="_blank"
+              class="hover:underline"
+            >
+              Powered by Buttondown.
+            </a>
+          </p>
+        </form>
+      </section>
       <section class="animate space-y-6">
         <div class="flex flex-wrap gap-y-2 items-center justify-between">
           <h5 class="font-semibold text-black dark:text-white">
