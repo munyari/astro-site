@@ -115,7 +115,8 @@ async function publishToButtondown(post: Article) {
       subject: post.data.title,
       body: post.body,
       email_type: "public",
-      status: "about_to_send",
+      status: "draft",
+      // status: "about_to_send",
     }),
   });
 
