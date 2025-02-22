@@ -2,6 +2,7 @@ import slugify from "slugify";
 import { join } from "path";
 import { writeFile, mkdir } from "fs/promises";
 import { ROUTES } from "@consts";
+import { loadEnv } from "./lib/env";
 
 interface ButtonDownEmailsResponse {
   results: ButtonDownListingEmail[];
@@ -44,7 +45,7 @@ function sanitize(s: string) {
         // - `[^>]*` matches any attributes after href
         // - `>` matches closing bracket
         /<a\s+[^>]*href="([^"]+)"[^>]*>/g,
-        "<a href=\"$1\">",
+        '<a href="$1">',
       )
   );
 }
@@ -102,4 +103,9 @@ draft: false
   }
 }
 
-importNewsletters();
+async function main() {
+  await loadEnv();
+  await importNewsletters();
+}
+
+main();

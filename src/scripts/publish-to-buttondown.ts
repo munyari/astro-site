@@ -1,21 +1,10 @@
-import { access, readFile, readdir, writeFile } from "fs/promises";
+import { readFile, readdir, writeFile } from "fs/promises";
 import { join } from "path";
 import matter from "gray-matter";
 import { z } from "zod";
 import { exec } from "child_process";
 import { promisify } from "util";
-import { config } from "dotenv";
-import { constants } from "fs";
-
-async function loadEnv() {
-  try {
-    await access(".env", constants.R_OK);
-    config();
-  } catch (error) {
-    // swallow any errors here so we can continue. If the environment is not setup right,
-    // we'll blow up later.
-  }
-}
+import { loadEnv } from "./lib/env";
 
 const execAsync = promisify(exec);
 

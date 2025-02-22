@@ -14,5 +14,3 @@ publishedToNewsletter: true
 ```
 
 2. This appears as a draft in buttondown.
-some more text for another commit.
-
