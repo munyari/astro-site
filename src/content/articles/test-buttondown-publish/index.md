@@ -1,10 +1,10 @@
 ---
 title: This is a test
-date: 2025-01-21
+date: 2025-01-21T00:00:00.000Z
 description: I want to see if you show up in buttondown
 draft: false
 publishToNewsletter: true
-publishedToNewsletter: false
+publishedToNewsletter: true
 ---
 
 Here's what I expect to see after pushing this.
