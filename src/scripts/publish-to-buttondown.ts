@@ -78,20 +78,25 @@ async function createGitCommit(filePath: string, title: string): Promise<void> {
     await execAsync(`git add "${filePath}"`);
     const { stdout: commitOutput, stderr: commitErr } = await execAsync(
       `git commit -m "Mark '${title}' as published to newsletter"`,
-      {
-        env: {
-          ...process.env,
-          GIT_AUTHOR_NAME: "Newsletter Bot",
-          GIT_COMMITTER_NAME: "Newsletter Bot",
-          GIT_AUTHOR_EMAIL: "newsletter-bot@example.com",
-          GIT_COMMITTER_EMAIL: "newsletter-bot@example.com",
-        },
-      },
     );
-    console.log(commitOutput);
-    console.log(commitErr);
+    if (commitOutput) console.log("git commit output:", commitOutput);
+    if (commitErr) console.log("git commit err:", commitErr);
   } catch (error) {
     throw new Error(`Failed to create git commit: ${error}`);
+  }
+}
+
+async function gitPush(): Promise<void> {
+  try {
+    const pushUrl = process.env.GIT_PUSH_URL;
+    if (!pushUrl) {
+      throw new Error("GIT_PUSH_URL not found in environment")
+    }
+    const { stdout: pushOutput, stderr: pushErr } = await execAsync(`git push ${pushUrl}`);
+    if (pushOutput) console.log("git push output:", pushOutput);
+    if (pushErr) console.log("git push err:", pushErr);
+  } catch (error) {
+    throw new Error(`Failed to push: ${error}`);
   }
 }
 
@@ -138,6 +143,7 @@ async function publishNewPosts() {
     );
     await updateFrontmatter(filePath);
     await createGitCommit(filePath, article.data.title);
+    await gitPush();
     console.log(`Publishing "${article.data.title}" to Buttondown...`);
     const resp = await publishToButtondown(article);
     console.log(
