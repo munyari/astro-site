@@ -1,9 +1,21 @@
-import { readFile, readdir, writeFile } from "fs/promises";
+import { access, readFile, readdir, writeFile } from "fs/promises";
 import { join } from "path";
 import matter from "gray-matter";
 import { z } from "zod";
 import { exec } from "child_process";
 import { promisify } from "util";
+import { config } from "dotenv";
+import { constants } from "fs";
+
+async function loadEnv() {
+  try {
+    await access(".env", constants.R_OK);
+    config();
+  } catch (error) {
+    // swallow any errors here so we can continue. If the environment is not setup right,
+    // we'll blow up later.
+  }
+}
 
 const execAsync = promisify(exec);
 
@@ -90,9 +102,11 @@ async function gitPush(): Promise<void> {
   try {
     const pushUrl = process.env.GIT_PUSH_URL;
     if (!pushUrl) {
-      throw new Error("GIT_PUSH_URL not found in environment")
+      throw new Error("GIT_PUSH_URL not found in environment");
     }
-    const { stdout: pushOutput, stderr: pushErr } = await execAsync(`git push ${pushUrl}`);
+    const { stdout: pushOutput, stderr: pushErr } = await execAsync(
+      `git push ${pushUrl}`,
+    );
     if (pushOutput) console.log("git push output:", pushOutput);
     if (pushErr) console.log("git push err:", pushErr);
   } catch (error) {
@@ -153,4 +167,9 @@ async function publishNewPosts() {
   }
 }
 
-publishNewPosts();
+async function main() {
+  await loadEnv();
+  await publishNewPosts();
+}
+
+main();
