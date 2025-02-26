@@ -16,7 +16,7 @@ const buttondownEmailResponse = z.object({
 });
 
 interface Article {
-  data: { [key: string]: any };
+  data: { [key: string]: unknown };
   body: string;
   slug: string;
 }
@@ -138,6 +138,9 @@ async function publishNewPosts() {
       !article.data.publishedToNewsletter,
   );
   for (const article of unpublishedArticles) {
+    if (typeof article.data.title !== "string") {
+      throw new Error("Title must be a string");
+    }
     const filePath = join(
       process.cwd(),
       "src/content/articles",

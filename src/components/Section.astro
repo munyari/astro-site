@@ -7,20 +7,23 @@ interface Props {
   link?: {
     text: string;
     href: string;
-  }
+  };
 }
 
 const { title, description, link } = Astro.props;
 ---
+
 <section class="animate space-y-6">
   <div class="flex flex-wrap gap-y-2 items-center justify-between">
     <h2 class="font-semibold text-black dark:text-white">{title}</h2>
     {link && <Link href={link.href}>{link.text}</Link>}
   </div>
-  {description && (
-    <article class="space-y-4">
-      <p class="animate">{description}</p>
-    </article>
-  )}
+  {
+    description && (
+      <article class="space-y-4">
+        <p class="animate">{description}</p>
+      </article>
+    )
+  }
   <slot />
 </section>
