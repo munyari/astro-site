@@ -6,6 +6,7 @@ import FormattedDate from "@components/FormattedDate.astro";
 import { readingTime } from "@lib/utils";
 import BackToPrev from "@components/BackToPrev.astro";
 import { ROUTES } from "@consts";
+import MailingListForm from "@components/MailingListForm.astro";
 
 export async function getStaticPaths() {
   const posts = (await getCollection("articles"))
@@ -44,5 +45,13 @@ const { Content } = await post.render();
     <article class="animate">
       <Content />
     </article>
+    <section class="animate space-y-4">
+      <hr />
+        <p class="cta-text">
+          Did you like what you read? Sign up for my mailing list to recieve all
+          of my articles directly in your inbox
+        </p>
+      <MailingListForm />
+    </section>
   </Container>
 </PageLayout>
