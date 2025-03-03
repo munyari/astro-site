@@ -14,7 +14,9 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "import-newsletters": "tsx src/scripts/import-newsletters.ts",
-    "publish-to-buttondown": "tsx src/scripts/publish-to-buttondown.ts"
+    "publish-to-buttondown": "tsx src/scripts/publish-to-buttondown.ts",
+    "typecheck": "pnpm exec tsc --noEmit",
+    "typecheck:watch": "pnpm exec tsc --noEmit --watch"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
