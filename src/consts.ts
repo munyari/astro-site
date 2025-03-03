@@ -1,4 +1,4 @@
-import type { Site, Metadata, Socials } from "@types";
+import type { Site, Socials } from "@types";
 
 export const SITE: Site = {
   NAME: "Panashe Fundira",
@@ -8,24 +8,38 @@ export const SITE: Site = {
   NUM_PROJECTS_ON_HOMEPAGE: 3,
 };
 
-export const HOME: Metadata = {
-  TITLE: "Home",
-  DESCRIPTION: "Personal site for Panashe M. Fundira.",
+export const ROUTES = {
+  About: "/about",
+  Articles: "/articles",
+  Home: "/",
+  Projects: "/projects",
+  Work: "/work",
+} as const;
+
+type RouteKeys = keyof typeof ROUTES;
+
+type RouteMetadata = {
+  [P in RouteKeys]: {
+    Title: P; // enforce that key = title
+    Description: string;
+  };
 };
 
-export const ARTICLES: Metadata = {
-  TITLE: "Articles",
-  DESCRIPTION: "I post occasional musings",
-};
-
-export const WORK: Metadata = {
-  TITLE: "Work",
-  DESCRIPTION: "Where I have worked and what I have done.",
-};
-
-export const PROJECTS: Metadata = {
-  TITLE: "Projects",
-  DESCRIPTION: "A collection of my client projects and testimonials",
+export const METADATA: RouteMetadata = {
+  Home: { Title: "Home", Description: "Personal site for Panashe M. Fundira." },
+  About: {
+    Title: "About",
+    Description: "Information on me, my background and what I do",
+  },
+  Articles: { Title: "Articles", Description: "I post occasional articles" },
+  Projects: {
+    Title: "Projects",
+    Description: "A collection of my client projects and testimonials",
+  },
+  Work: {
+    Title: "Work",
+    Description: "Where I have worked and what I have done.",
+  },
 };
 
 export const SOCIALS: Socials = [
@@ -42,9 +56,3 @@ export const SOCIALS: Socials = [
     HREF: "https://www.linkedin.com/in/panashe-fundira",
   },
 ];
-
-export const ROUTES = {
-  Articles: "/articles",
-  Projects: "/projects",
-  Work: "/work",
-} as const;

@@ -1,6 +1,6 @@
 import rss from "@astrojs/rss";
 import { getCollection } from "astro:content";
-import { HOME } from "@consts";
+import { METADATA } from "@consts";
 
 type Context = {
   site: string;
@@ -20,8 +20,8 @@ export async function GET(context: Context) {
   );
 
   return rss({
-    title: HOME.TITLE,
-    description: HOME.DESCRIPTION,
+    title: METADATA.Home.Title,
+    description: METADATA.Home.Description,
     site: context.site,
     items: items.map((item) => ({
       title: item.data.title,

@@ -74,5 +74,5 @@ html.scrolled #back-to-top {
 }
 
 .cta-text {
-    @apply font-serif;
+  @apply font-serif;
 }

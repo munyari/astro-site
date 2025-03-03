@@ -5,7 +5,7 @@ import PageLayout from "@layouts/PageLayout.astro";
 import ArrowCard from "@components/ArrowCard.astro";
 import SocialLink from "@components/SocialLink.astro";
 import { dateRange } from "@lib/utils";
-import { SITE, HOME, SOCIALS, ROUTES } from "@consts";
+import { SITE, METADATA, SOCIALS, ROUTES } from "@consts";
 import CalendarBooker from "@react/components/CalendarBooker";
 import Section from "@components/Section.astro";
 import MailingListForm from "@components/MailingListForm.astro";
@@ -34,9 +34,11 @@ const work = await Promise.all(
     return { ...item, Content };
   }),
 );
+
+const { Home } = METADATA;
 ---
 
-<PageLayout title={HOME.TITLE} description={HOME.DESCRIPTION}>
+<PageLayout title={Home.Title} description={Home.Description}>
   <Container>
     <div class="space-y-16">
       <Section

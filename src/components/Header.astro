@@ -2,6 +2,12 @@
 import Container from "@components/Container.astro";
 import Link from "@components/Link.astro";
 import { ROUTES, SITE } from "@consts";
+
+const navLinks = [
+  { href: ROUTES.About, text: "about" },
+  { href: ROUTES.Articles, text: "articles" },
+  { href: ROUTES.Projects, text: "projects" },
+];
 ---
 
 <header>
@@ -13,15 +19,14 @@ import { ROUTES, SITE } from "@consts";
         </div>
       </Link>
       <nav class="flex gap-1">
-        <Link href={ROUTES.Articles}> articles </Link>
-        <span>
-          {`/`}
-        </span>
-        <Link href={ROUTES.Work}> work </Link>
-        <span>
-          {`/`}
-        </span>
-        <Link href={ROUTES.Projects}> projects </Link>
+        {
+          navLinks.map((link, index) => (
+            <>
+              <Link href={link.href}>{link.text}</Link>
+              {index < navLinks.length - 1 && <span>/</span>}
+            </>
+          ))
+        }
       </nav>
     </div>
   </Container>

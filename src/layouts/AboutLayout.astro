@@ -1,0 +1,20 @@
+---
+import PageLayout from "@layouts/PageLayout.astro";
+import Container from "@components/Container.astro";
+import { METADATA } from "@consts";
+
+const { About } = METADATA;
+---
+
+<PageLayout title={About.Title} description={About.Description}>
+  <Container>
+    <div class="space-y-10">
+      <div class="animate font-semibold text-black dark:text-white">About</div>
+      <section>
+        <article class="animate">
+          <slot />
+        </article>
+      </section>
+    </div>
+  </Container>
+</PageLayout>
