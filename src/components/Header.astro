@@ -4,9 +4,13 @@ import Link from "@components/Link.astro";
 import { ROUTES, SITE } from "@consts";
 
 const navLinks = [
-  { href: ROUTES.About, text: "about" },
-  { href: ROUTES.Articles, text: "articles" },
-  { href: ROUTES.Projects, text: "projects" },
+  ...Object.entries(ROUTES)
+    .filter(([key]) => ["About", "Articles", "Projects"].includes(key))
+    .map(([_, route]) => ({
+      href: route,
+      text: route.slice(1),
+    })),
+  { href: "https://buttondown.com/passionately-curious", text: "newsletter" },
 ];
 ---
 
