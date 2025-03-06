@@ -106,3 +106,27 @@ html.scrolled #back-to-top {
 .cta-text {
   @apply font-serif;
 }
+
+body {
+	background-color: #eff1f5;
+}
+
+.text-black, article {
+	color: #4c4f69;
+}
+
+label, div {
+	color: color-mix(in oklab, #4c4f69 60%, transparent);
+}
+
+header {
+	background-color: color-mix(in oklab, #eff1f5 75%, transparent);
+}
+
+.text-current, a, button {
+	color: #6c6f85;
+}
+
+div.font-semibold {
+	color: #6c6f85;
+}
