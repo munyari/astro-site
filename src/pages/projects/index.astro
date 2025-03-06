@@ -1,13 +1,8 @@
 ---
-import { getCollection } from "astro:content";
 import PageLayout from "@layouts/PageLayout.astro";
 import Container from "@components/Container.astro";
-import ArrowCard from "@components/ArrowCard.astro";
 import { METADATA } from "@consts";
-
-const projects = (await getCollection("projects"))
-  .filter((project) => !project.data.draft)
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+import ProjectsList from "@components/ProjectsList.astro";
 
 const { Projects } = METADATA;
 ---
@@ -18,17 +13,7 @@ const { Projects } = METADATA;
       <div class="animate font-semibold text-black dark:text-white">
         Projects
       </div>
-      <ul class="animate flex flex-col gap-4">
-        {
-          projects.length > 0
-            ? projects.map((project) => (
-                <li>
-                  <ArrowCard entry={project} />
-                </li>
-              ))
-            : "Coming Soon!"
-        }
-      </ul>
+      <ProjectsList />
     </div>
   </Container>
 </PageLayout>

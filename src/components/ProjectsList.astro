@@ -1,0 +1,30 @@
+---
+import { getCollection } from "astro:content";
+import ArrowCard from "@components/ArrowCard.astro";
+
+interface Props {
+  limit?: number;
+}
+
+const { limit } = Astro.props;
+
+const projects = (await getCollection("projects"))
+  .filter((project) => !project.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const displayProjects = limit ? projects.slice(0, limit) : projects;
+---
+
+{
+  displayProjects.length > 0 ? (
+    <ul class="animate flex flex-col gap-4">
+      {displayProjects.map((project) => (
+        <li>
+          <ArrowCard entry={project} />
+        </li>
+      ))}
+    </ul>
+  ) : (
+    "Coming Soon!"
+  )
+}

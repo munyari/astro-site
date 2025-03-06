@@ -9,6 +9,7 @@ import { SITE, METADATA, SOCIALS, ROUTES } from "@consts";
 import CalendarBooker from "@react/components/CalendarBooker";
 import Section from "@components/Section.astro";
 import MailingListForm from "@components/MailingListForm.astro";
+import ProjectsList from "@components/ProjectsList.astro";
 
 const articles = (await getCollection("articles"))
   .filter((post) => !post.data.draft)
@@ -69,18 +70,8 @@ const { Home } = METADATA;
       <Section
         title="Recent projects"
         link={{ text: "See all projects", href: ROUTES.Projects }}
-      >
-        <ul class="flex flex-col gap-4">
-          {
-            projects.length > 0
-              ? projects.map((project) => (
-                  <li>
-                    <ArrowCard entry={project} />
-                  </li>
-                ))
-              : "Coming Soon!"
-          }
-        </ul>
+        >
+        <ProjectsList />
       </Section>
       <Section
         title="Work experience"
