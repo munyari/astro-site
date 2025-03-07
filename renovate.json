@@ -25,18 +25,18 @@
   "automergeSchedule": ["before 4 pm on monday-thursday"],
   "packageRules": [
     {
-      "matchPackagePatterns": [
-        "^eslint",
-        "eslint-.*",
-        "^prettier",
-        "prettier-.*",
-        "^typescript",
-        "^@typescript-eslint/.*"
-      ],
       "matchUpdateTypes": ["minor", "patch"],
       "automerge": true,
       "automergeType": "branch",
-      "automergeStrategy": "squash"
+      "automergeStrategy": "squash",
+      "matchPackageNames": [
+        "/^eslint/",
+        "/eslint-.*/",
+        "/^prettier/",
+        "/prettier-.*/",
+        "/^typescript/",
+        "/^@typescript-eslint/.*/"
+      ]
     }
   ]
 }
