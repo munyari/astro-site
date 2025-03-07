@@ -1,4 +1,42 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:best-practices"]
+  "extends": ["config:best-practices"],
+  "schedule": ["before 9 am on monday"],
+  "prConcurrentLimit": 5,
+  "prHourlyLimit": 0,
+  "timezone": "America/New_York",
+  "dependencyDashboard": true,
+  "vulnerabilityAlerts": {
+    "groupName": null,
+    "schedule": [],
+    "dependencyDashboardApproval": false,
+    "minimumReleaseAge": null,
+    "rangeStrategy": "replace",
+    "commitMessagePrefix": "[SECURITY]",
+    "branchTopic": "{{{datasource}}}-{{{depNameSanitized}}}-vulnerability",
+    "prCreation": "immediate",
+    "vulnerabilityFixStrategy": "lowest"
+  },
+  "reviewers": ["munyari"],
+  "commitMessagePrefix": "⬆️ Deps:",
+  "commitBodyTable": true,
+  "minimumReleaseAge": "7 days",
+  "automerge": false,
+  "automergeSchedule": ["before 4 pm on monday-thursday"],
+  "packageRules": [
+    {
+      "matchPackagePatterns": [
+        "^eslint",
+        "eslint-.*",
+        "^prettier",
+        "prettier-.*",
+        "^typescript",
+        "^@typescript-eslint/.*"
+      ],
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true,
+      "automergeType": "branch",
+      "automergeStrategy": "squash"
+    }
+  ]
 }
