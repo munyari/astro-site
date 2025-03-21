@@ -10,10 +10,7 @@ import CalendarBooker from "@react/components/CalendarBooker";
 const { Consulting } = METADATA;
 ---
 
-<PageLayout
-  title="Strategic Engineering Consulting"
-  description="Strategic engineering consulting for early-stage startups and non-technical founders. I help align technology with your business goals."
->
+<PageLayout title={Consulting.Title} description={Consulting.Description}>
   <Container>
     <div class="space-y-16">
       <!-- Value Proposition & Positioning -->
@@ -48,7 +45,7 @@ const { Consulting } = METADATA;
                 "Uncertainty which technologies to invest in for your product vision",
                 "Looking for technical guidance without the overhead of a full-time CTO",
                 "Concerns with turning an MVP or AI-built prototype into a 'real product'",
-		"Implementation of compliance requirements (e.g. HIPPA)",
+                "Implementation of compliance requirements (e.g. HIPPA)",
                 "Concerned about building scalable architecture that won't require costly rewrites",
               ].map((problemStatement) => (
                 <li class="flex gap-2">
@@ -152,7 +149,7 @@ const { Consulting } = METADATA;
               <h3 class="font-semibold">Technologies</h3>
               <ul class="mt-1 space-y-1">
                 <li>• Modern JavaScript/TypeScript ecosystems</li>
-		<li>• Python, Go for data and backend systems</li>
+                <li>• Python, Go for data and backend systems</li>
                 <li>• Infrastructure as Code</li>
                 <li>• CI/CD and developer experience</li>
               </ul>
