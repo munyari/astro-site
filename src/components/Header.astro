@@ -5,7 +5,7 @@ import { ROUTES, SITE } from "@consts";
 
 const navLinks = [
   ...Object.entries(ROUTES)
-    .filter(([key]) => ["About", "Articles", "Projects"].includes(key))
+    .filter(([key]) => ["About", "Articles", "Consulting"].includes(key))
     .map(([_, route]) => ({
       href: route,
       text: route.slice(1),

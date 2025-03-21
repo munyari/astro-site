@@ -13,6 +13,7 @@ export const ROUTES = {
   Articles: "/articles",
   Home: "/",
   Projects: "/projects",
+  Consulting: "/consulting",
   Work: "/work",
 } as const;
 
@@ -32,6 +33,11 @@ export const METADATA: RouteMetadata = {
     Description: "Information on me, my background and what I do",
   },
   Articles: { Title: "Articles", Description: "I post occasional articles" },
+  Consulting: {
+    Title: "Consulting",
+    Description:
+      "Information about working with me: who I help, my process, and how to contact me",
+  },
   Projects: {
     Title: "Projects",
     Description: "A collection of my client projects and testimonials",

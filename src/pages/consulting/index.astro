@@ -1,0 +1,190 @@
+---
+import PageLayout from "@layouts/PageLayout.astro";
+import Container from "@components/Container.astro";
+import Section from "@components/Section.astro";
+import Link from "@components/Link.astro";
+import { METADATA } from "@consts";
+import CalendarBooker from "@react/components/CalendarBooker";
+
+// Update METADATA in consts.ts to include Consulting metadata
+const { Consulting } = METADATA;
+---
+
+<PageLayout
+  title="Strategic Engineering Consulting"
+  description="Strategic engineering consulting for early-stage startups and non-technical founders. I help align technology with your business goals."
+>
+  <Container>
+    <div class="space-y-16">
+      <!-- Value Proposition & Positioning -->
+      <Section>
+        <div class="animate space-y-4">
+          <h1 class="font-semibold text-2xl text-black dark:text-white">
+            Strategic Engineering Consulting
+          </h1>
+          <p class="text-lg">
+            I help early-stage founders translate business goals into technology
+            decisions that <span class="font-semibold">scale</span>.
+          </p>
+          <p>
+            Especially if you're a non-technical founder, navigating the
+            technical landscape can be overwhelming. I bridge the gap between
+            your business vision and the technology needed to realize it.
+          </p>
+        </div>
+      </Section>
+
+      <!-- Problem Identification -->
+      <Section>
+        <div class="animate space-y-4">
+          <h2 class="font-semibold text-xl text-black dark:text-white">
+            Challenges I Help Solve
+          </h2>
+          <ul class="space-y-3">
+            {
+              [
+                "Difficulty communicating effectively with technical teams or contractors",
+                "Cost overruns from missed deadlines and unreliable estimates",
+                "Uncertainty which technologies to invest in for your product vision",
+                "Looking for technical guidance without the overhead of a full-time CTO",
+                "Concerns with turning an MVP or AI-built prototype into a 'real product'",
+		"Implementation of compliance requirements (e.g. HIPPA)",
+                "Concerned about building scalable architecture that won't require costly rewrites",
+              ].map((problemStatement) => (
+                <li class="flex gap-2">
+                  <span class="font-semibold">→</span>
+                  <span>{problemStatement}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </Section>
+
+      <!-- Solution Approach -->
+      <Section>
+        <div class="animate space-y-4">
+          <h2 class="font-semibold text-xl text-black dark:text-white">
+            My Approach
+          </h2>
+          <p>
+            I focus on business outcomes first, then work backward to the right
+            technical solutions. This means:
+          </p>
+          <ul class="space-y-3">
+            {
+              [
+                "Pragmatic decision-making that balances immediate needs with long-term architecture",
+                "Clear trade-off analysis that you can understand, regardless of your technical background",
+                "Technology recommendations that align with your resources, timeline, and business goals",
+                "Focused on creating leverage - helping you do more with less",
+              ].map((approach) => (
+                <li class="flex gap-2">
+                  <span class="font-semibold">→</span>
+                  <span>{approach}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </Section>
+
+      <!-- Working Process -->
+      <Section>
+        <div class="animate space-y-4">
+          <h2 class="font-semibold text-xl text-black dark:text-white">
+            How We Work Together
+          </h2>
+          <div class="space-y-5">
+            <div>
+              <h3 class="font-semibold">1. Initial Consultation</h3>
+              <p>
+                We start with a complimentary 30-minute call to understand your
+                challenges and determine if we're a good fit.
+              </p>
+            </div>
+            <div>
+              <h3 class="font-semibold">2. Discovery Phase</h3>
+              <p>
+                A paid deep-dive into your business goals, current technical
+                state, and future requirements. This typically results in a
+                strategic roadmap document.
+              </p>
+            </div>
+            <div>
+              <h3 class="font-semibold">3. Engagement Options</h3>
+              <p>Based on your needs, we can work together through:</p>
+              <ul class="mt-2 space-y-1">
+                {
+                  [
+                    "• Project-based consulting for specific challenges",
+                    "• Ongoing advisory relationship (typically 4-8 hours monthly)",
+                    "• Technical due diligence for investment decisions",
+                  ].map((item) => <li class="ml-4">{item}</li>)
+                }
+              </ul>
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      <!-- Expertise Areas (Brief) -->
+      <Section>
+        <div class="animate space-y-4">
+          <h2 class="font-semibold text-xl text-black dark:text-white">
+            Technical Experience
+          </h2>
+          <p>
+            My background spans enterprise and startup environments, with
+            particular depth in:
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <h3 class="font-semibold">Domains</h3>
+              <ul class="mt-1 space-y-1">
+                <li>• System architecture design</li>
+                <li>• API strategy and implementation</li>
+                <li>• Cloud infrastructure (AWS, GCP)</li>
+                <li>• System verification and validation</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="font-semibold">Technologies</h3>
+              <ul class="mt-1 space-y-1">
+                <li>• Modern JavaScript/TypeScript ecosystems</li>
+		<li>• Python, Go for data and backend systems</li>
+                <li>• Infrastructure as Code</li>
+                <li>• CI/CD and developer experience</li>
+              </ul>
+            </div>
+          </div>
+          <p class="text-sm italic">
+            While I have technical depth, my value comes from translating
+            business needs into the right technical decisions, not in pushing
+            specific technologies.
+          </p>
+        </div>
+      </Section>
+
+      <!-- Call to Action -->
+      <Section>
+        <div class="animate space-y-6">
+          <h2 class="font-semibold text-xl text-black dark:text-white">
+            Let's Work Together
+          </h2>
+          <p>
+            If you're interested in exploring how I can help your startup make
+            better technology decisions, book a complimentary discovery call.
+          </p>
+
+          <CalendarBooker client:load />
+          <p class="text-sm text-center">
+            Not ready to talk? Feel free to <Link
+              href="mailto:fundirap@gmail.com">email me</Link
+            > with any questions.
+          </p>
+        </div>
+      </Section>
+    </div>
+  </Container>
+</PageLayout>
