@@ -5,7 +5,9 @@
   "prConcurrentLimit": 5,
   "prHourlyLimit": 0,
   "timezone": "America/New_York",
-  "dependencyDashboard": true,
+  "dependencyDashboard": {
+    "enabled": true
+  },
   "vulnerabilityAlerts": {
     "groupName": null,
     "schedule": [],
